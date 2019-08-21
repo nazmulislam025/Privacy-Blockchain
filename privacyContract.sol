@@ -46,4 +46,16 @@ contract ownershipContract {
         );
         idInfo[_identifier].owner = buyer;
     }
+
+    function transferTenancy(uint _identifier, address buyer) public {
+        require(
+            msg.sender == idInfo[_identifier].owner,
+            "Only device owner can transfer the ownership."
+        );
+        idInfo[_identifier].owner = buyer;
+    }
+
+    pollTenancy(uint _identifier) public view returns (address _ownerName) {
+        _ownerName = idInfo[_identifier].owner;
+    }
 }
